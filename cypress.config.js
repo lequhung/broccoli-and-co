@@ -1,6 +1,5 @@
 import { defineConfig } from 'cypress';
-
-const codeCoverageTask = require('@cypress/code-coverage/task');
+import codeCoverageTask from '@cypress/code-coverage/task';
 
 export default defineConfig({
   chromeWebSecurity: false,

@@ -1,4 +1,4 @@
-import { EnvConfig } from '../models/envConfig.model';
+import { EnvConfig } from './typed';
 import { localhostEnvConfig } from './localhost.env.config';
 
 const LOCALHOST_URL = 'localhost';

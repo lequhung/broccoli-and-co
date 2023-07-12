@@ -1,5 +1,4 @@
 const dirs = require('./paths');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { merge } = require('webpack-merge');
 const webpackConfigBase = require('./webpack.config.base.js');
 const { homepage } = require('../package.json');
@@ -11,7 +10,6 @@ module.exports = merge(webpackConfigBase, {
     publicPath: homepage
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: dirs.PUBLIC_ENTRY_POINT_HTML,
       publicUrl: homepage

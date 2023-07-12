@@ -8,7 +8,7 @@ module.exports = {
     // this makes eslint not fail for new/config files
     createDefaultProgram: true
   },
-  extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended', 'plugin:react/recommended'],
+  extends: ['plugin:@typescript-eslint/recommended', 'plugin:react/recommended'],
   settings: {
     react: {
       version: 'detect'

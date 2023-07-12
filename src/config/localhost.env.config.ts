@@ -1,4 +1,4 @@
-import { EnvConfig } from '../models/envConfig.model';
+import { EnvConfig } from './typed';
 
 export const localhostEnvConfig: EnvConfig = {
   baseUrl: '/'
