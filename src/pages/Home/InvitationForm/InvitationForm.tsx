@@ -117,7 +117,7 @@ const InvitationForm: React.FC<Props> = ({ onClose, onSend }) => {
           Cancel
         </Button>
       </form>
-      <Styled.ErrorMessage>{errorMessage}</Styled.ErrorMessage>
+      <Styled.ErrorMessage id="errorMessage">{errorMessage}</Styled.ErrorMessage>
     </Styled.Container>
   );
 };

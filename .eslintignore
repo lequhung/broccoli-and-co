@@ -1,4 +1,7 @@
-**/node_modules/**
-**/build/**
-**/coverage/**
-**/webpack/**
+node_modules/**
+build/**
+coverage/**
+webpack/**
+cypress/**
+.eslintrc.js
+cypress.config.js

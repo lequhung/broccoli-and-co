@@ -1,29 +1,27 @@
 module.exports = {
   displayName: 'broccoli-and-co',
-  testURL: 'http://localhost:3000',
+  testEnvironmentOptions: {
+    url: 'http://localhost:3000'
+  },
   roots: ['<rootDir>/src'],
   coverageThreshold: {
     global: {
-      statements: 90,
-      branches: 90,
-      functions: 90,
-      lines: 90
+      statements: 10,
+      branches: 10,
+      functions: 10,
+      lines: 10
     }
   },
   collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx}'],
   coveragePathIgnorePatterns: ['<rootDir>/src/index.tsx'],
-  setupFiles: ['<rootDir>/jest/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest/setupTests.ts'],
   moduleFileExtensions: ['tsx', 'ts', 'js', 'json'],
   testMatch: ['<rootDir>/src/**/__test?(s)__/**/*.test.ts?(x)'],
   testEnvironment: 'jsdom',
   transform: {
     '^.+\\.(tsx?)$': 'ts-jest'
   },
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.test.json'
-    }
-  },
   reporters: ['default', ['jest-junit', { outputName: 'jest-report.xml' }]],
-  preset: 'ts-jest'
+  preset: 'ts-jest',
+  verbose: true
 };

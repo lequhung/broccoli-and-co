@@ -63,5 +63,5 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["webpack"]
+  "exclude": ["webpack", "cypress", "cypress.config.js"]
 }

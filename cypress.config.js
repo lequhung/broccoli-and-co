@@ -19,6 +19,6 @@ export default defineConfig({
       return config;
     },
     baseUrl: 'http://localhost:3000',
-    specPattern: 'cypress/e2e/functional/**/*.spec.{js,ts}'
+    specPattern: 'cypress/e2e/functional/**/*.cy.{js,ts}'
   }
 });

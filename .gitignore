@@ -8,6 +8,7 @@
 /coverage
 /jest-report.xml
 /cypress-report.*.xml
+/bundle-analyzer-stats.json
 
 # production
 /build

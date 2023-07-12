@@ -84,11 +84,22 @@ Invitation Form
   npm run build
   ```
 
-- Run bundle/package analyzer
+- Create bundle/package analyzer .json file
 
   ```sh
   npm run bundle-analyzer
   ```
+
+- Open bundle/package analyzer .json file
+
+  ```sh
+  npm run bundle-analyzer-open
+  ```
+
+## Notes
+
+- The implementation of components are kept simple due to time limit
+- Tests are written where necessary due to time limit
 
 ## Known Issues
 

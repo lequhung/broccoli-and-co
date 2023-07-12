@@ -20,6 +20,7 @@ export const useOnPopupClose = <T extends HTMLElement>(
 
     document.addEventListener('keydown', keyDownListener);
     document.addEventListener('mousedown', mouseDownListener);
+
     return () => {
       document.removeEventListener('keydown', keyDownListener);
       document.removeEventListener('mousedown', mouseDownListener);
