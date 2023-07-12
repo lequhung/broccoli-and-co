@@ -18,7 +18,7 @@ Invitation Form
 
 ## Usage
 
-- Start application
+- Start application (running on http://localhost:3000)
 
   ```sh
   npm start
@@ -36,7 +36,7 @@ Invitation Form
   npm run test:unit-watch
   ```
 
-- Run unit test with watch on and coverage
+- Run unit test with watch on and showing coverage
 
   ```sh
   npm run test:unit-watch-coverage
@@ -99,8 +99,8 @@ Invitation Form
 ## Notes
 
 - The implementation of components are kept simple due to time limit
-- Tests are written where necessary due to time limit
+- Tests are written for important components/logic due to time limit
 
 ## Known Issues
 
-- Webpack 5 does not clean /build folder
+- Webpack 5 does not clean `/build` folder and if `/build` folder is not removed, error will occur when starting up `devServer`
