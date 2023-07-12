@@ -4,17 +4,18 @@ Invitation Form
 
 ## Technologies
 
-- React
+- React 18
 - React Hook Form
-- EmotionJS
-- Typescript
+- EmotionJS 11
+- Typescript 5
 - Context API
-- Webpack
+- Webpack 5
 - Eslint
 - Prettier
-- Cypress
+- Cypress 12
 - Jest
 - React Testing Library
+- NodeJS 18
 
 ## Usage
 
