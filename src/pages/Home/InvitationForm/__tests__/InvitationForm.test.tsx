@@ -20,46 +20,48 @@ function clickOnSendButton(container) {
 }
 
 describe('Invitation Form', () => {
-  const onCloseMock = jest.fn();
-
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   test('should send an Invitation successfully', async () => {
-    const { container } = render(
-      <InvitationForm onClose={onCloseMock} onSend={jest.fn().mockResolvedValue(undefined)} />
-    );
+    const onSendMock = jest.fn().mockResolvedValue(undefined);
+
+    const { container } = render(<InvitationForm onSend={onSendMock} />);
     await fillForm();
 
     const btnSend = clickOnSendButton(container);
-    clickOnSendButton(container);
 
     await waitFor(() => {
-      expect(onCloseMock).not.toHaveBeenNthCalledWith(1);
+      expect(onSendMock).toHaveBeenCalledWith({ name: 'Hung Le', email: 'hung@le.com' });
       expect(btnSend).toHaveTextContent('Send');
     });
   });
 
   test('should send an Invitation unsuccessfully due to server error', async () => {
-    const { container } = render(
-      <InvitationForm onClose={onCloseMock} onSend={jest.fn().mockRejectedValue('error message')} />
-    );
+    const onSendMock = jest.fn().mockRejectedValue('error message');
+
+    const { container } = render(<InvitationForm onSend={onSendMock} />);
     await fillForm();
 
     const btnSend = clickOnSendButton(container);
-    clickOnSendButton(container);
 
     await waitFor(() => {
-      expect(onCloseMock).not.toHaveBeenNthCalledWith(1);
+      expect(onSendMock).toHaveBeenCalledWith({ name: 'Hung Le', email: 'hung@le.com' });
       expect(btnSend).toHaveTextContent('Send');
       expect(container.querySelector('div#errorMessage')).toHaveTextContent('error message');
     });
   });
 
   describe('Validations', () => {
+    const onSendMock = jest.fn();
+
+    afterEach(() => {
+      expect(onSendMock).not.toHaveBeenCalled();
+    });
+
     test('should display error messages for required fields', async () => {
-      const { container } = render(<InvitationForm onClose={onCloseMock} onSend={jest.fn()} />);
+      const { container } = render(<InvitationForm onSend={onSendMock} />);
 
       clickOnSendButton(container);
 
@@ -71,7 +73,7 @@ describe('Invitation Form', () => {
     });
 
     test('should display error message for a name that is shorter than 3 characters', async () => {
-      const { container } = render(<InvitationForm onClose={onCloseMock} onSend={jest.fn()} />);
+      const { container } = render(<InvitationForm onSend={onSendMock} />);
 
       const inpFullName = await screen.findByPlaceholderText('Full name');
       fireEvent.change(inpFullName, { target: { value: 'Le' } });
@@ -85,7 +87,7 @@ describe('Invitation Form', () => {
     });
 
     test('should display error messages for invalid email and confirm email', async () => {
-      const { container } = render(<InvitationForm onClose={onCloseMock} onSend={jest.fn()} />);
+      const { container } = render(<InvitationForm onSend={onSendMock} />);
 
       const inpEmail = await screen.findByPlaceholderText('Email');
       fireEvent.change(inpEmail, { target: { value: 'hung@le' } });
@@ -101,7 +103,7 @@ describe('Invitation Form', () => {
     });
 
     test('should display error message if email and confirm email are not matching', async () => {
-      const { container } = render(<InvitationForm onClose={onCloseMock} onSend={jest.fn()} />);
+      const { container } = render(<InvitationForm onSend={onSendMock} />);
 
       const inpEmail = await screen.findByPlaceholderText('Email');
       fireEvent.change(inpEmail, { target: { value: 'hung@le.com' } });

@@ -7,11 +7,10 @@ import { InvitationFormInputs } from './types';
 import { regex } from '../../../constants/regex.const';
 
 interface Props {
-  onClose: () => void;
   onSend: (payload: InvitationPostModel) => Promise<void>;
 }
 
-const InvitationForm: React.FC<Props> = ({ onClose, onSend }) => {
+const InvitationForm: React.FC<Props> = ({ onSend }) => {
   const [errorMessage, setErrorMessage] = React.useState('');
   const [isSending, setSending] = React.useState(false);
   const {
@@ -28,22 +27,25 @@ const InvitationForm: React.FC<Props> = ({ onClose, onSend }) => {
     return false;
   }, []);
 
-  const onSendInvitation = React.useCallback((data: InvitationFormInputs) => {
-    if (isSending) {
-      return;
-    }
+  const onSendInvitation = React.useCallback(
+    (data: InvitationFormInputs) => {
+      // prevent multiple clicking on the Send button
+      if (isSending) {
+        return;
+      }
 
-    setErrorMessage('');
-    setSending(true);
+      setErrorMessage('');
+      setSending(true);
 
-    onSend({
-      name: data.fullName,
-      email: data.email
-    })
-      .then(() => onClose())
-      .catch(error => setErrorMessage(error))
-      .finally(() => setSending(false));
-  }, []);
+      onSend({
+        name: data.fullName,
+        email: data.email
+      })
+        .catch(error => setErrorMessage(error))
+        .finally(() => setSending(false));
+    },
+    [isSending]
+  );
 
   const validateForm = React.useCallback((value: string, formValues: InvitationFormInputs) => {
     setErrorMessage('');
@@ -59,8 +61,6 @@ const InvitationForm: React.FC<Props> = ({ onClose, onSend }) => {
 
   return (
     <Styled.Container>
-      <h1>Request an invite</h1>
-      <Styled.Separator />
       <form onSubmit={handleSubmit(onSendInvitation)}>
         <Input
           id="inpFullName"
@@ -112,9 +112,6 @@ const InvitationForm: React.FC<Props> = ({ onClose, onSend }) => {
         ></Input>
         <Button id="btnSend" type="submit">
           {isSending ? 'Sending, please wait...' : 'Send'}
-        </Button>
-        <Button id="btnCancel" type="button" onClick={onClose}>
-          Cancel
         </Button>
       </form>
       <Styled.ErrorMessage id="errorMessage">{errorMessage}</Styled.ErrorMessage>

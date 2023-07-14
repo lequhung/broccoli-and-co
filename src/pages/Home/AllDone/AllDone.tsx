@@ -3,23 +3,19 @@ import { Button, Text } from '../../../components';
 import * as Styled from './styled';
 
 interface Props {
-  onClose: () => void;
+  onClick: () => void;
 }
 
-const AllDone: React.FC<Props> = ({ onClose }) => {
+const AllDone: React.FC<Props> = ({ onClick }) => {
   return (
     <Styled.Container>
-      <h1>All done!</h1>
-      <Styled.Separator />
-      <Styled.Content>
-        <Text>
-          <>
-            You will be one of the first to experience
-            <span>Broccoli & Co. when we launch.</span>
-          </>
-        </Text>
-      </Styled.Content>
-      <Button id="btnOk" type="button" onClick={onClose}>
+      <Text>
+        <>
+          You will be one of the first to experience
+          <span>Broccoli & Co. when we launch.</span>
+        </>
+      </Text>
+      <Button id="btnOk" type="button" onClick={onClick}>
         Ok
       </Button>
     </Styled.Container>
