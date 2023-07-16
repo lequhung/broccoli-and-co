@@ -76,6 +76,10 @@ const InvitationForm: React.FC<Props> = ({ onSend }) => {
             maxLength: {
               value: 300,
               message: 'Full name must have no more than 300 characters'
+            },
+            pattern: {
+              value: regex.name,
+              message: 'Invalid name'
             }
           })}
         ></Input>
