@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Styled from './styled';
 import Modal from '../Modal/Modal';
+import Heading from '../Heading/Heading';
 
 interface Props {
   title: string | React.ReactElement;
@@ -16,7 +17,7 @@ const ModalFormLayout: React.FC<Props> = ({ title, onModalClosed, width = '410px
         <Styled.Close>
           <button onClick={onModalClosed}>&#x2715;</button>
         </Styled.Close>
-        <h1>{title}</h1>
+        <Heading level="h1">{title}</Heading>
         <Styled.Separator />
         <Styled.Content>{children}</Styled.Content>
       </Styled.Container>

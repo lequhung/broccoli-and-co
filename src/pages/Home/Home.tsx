@@ -37,10 +37,10 @@ const Home: React.FC = () => {
   return (
     <Page>
       <Styled.Content>
-        <Styled.Heading>
+        <Styled.HeadingTitle level="h1">
           A better way
           <span>to enjoy every day.</span>
-        </Styled.Heading>
+        </Styled.HeadingTitle>
         <Text>Be the first to know when we launch.</Text>
         <Styled.RequestButton id="btnRequestAnInvite" type="button" onClick={onOpenInvitationForm}>
           Request an invite
