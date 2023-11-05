@@ -19,6 +19,12 @@ Invitation Form
 
 ## Usage
 
+- Installation (Gotta force the installation to ignore warnings)
+
+  ```sh
+  npm i --force
+  ```
+
 - Start application (running on http://localhost:3000)
 
   ```sh
